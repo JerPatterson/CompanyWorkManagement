@@ -26,7 +26,9 @@ function getCurrentWeek() {
   }
 
   const ws = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(CURRENT_WEEK_SHEET);
-  ws.getRange(HEADER_ROW + 1, 1, data.length, data[0]?.length).setValues(data);
+  if (data[0]) {
+    ws.getRange(HEADER_ROW + 1, 1, data.length, data[0].length).setValues(data);
+  }
 }
 
 function getPastWeek() {
@@ -39,7 +41,9 @@ function getPastWeek() {
   }
 
   const ws = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(PAST_WEEK_SHEET);
-  ws.getRange(HEADER_ROW + 1, 1, data.length, data[0]?.length).setValues(data);
+  if (data[0]) {
+    ws.getRange(HEADER_ROW + 1, 1, data.length, data[0].length).setValues(data);
+  }
 }
 
 function getDataFromSpreadsheet(file, sheetName) {
